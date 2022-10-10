@@ -1,5 +1,5 @@
 import { hopeTheme } from "vuepress-theme-hope";
-import { enNavbar, zhNavbar } from "./navbar/index.js";
+import { my_navbar } from "./navbar/index.js";
 import { enSidebar, zhSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
@@ -12,7 +12,7 @@ export default hopeTheme({
 
   iconAssets: "iconfont",
 
-  logo: "/logo.svg",
+  logo: "/logo.png",
 
   repo: "yubinCloud/notebook-paper",
 
@@ -65,7 +65,7 @@ export default hopeTheme({
      */
     "/": {
       // navbar
-      navbar: zhNavbar,
+      navbar: my_navbar,
 
       // sidebar
       sidebar: zhSidebar,

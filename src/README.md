@@ -2,10 +2,10 @@
 home: true
 layout: Blog
 icon: home
-title: Blog Home
-heroImage: /logo.svg
-heroText: the name of your blog
-tagline: You can put your slogan here
+title: notebook-paper
+heroImage: /logo.png
+heroText: Papar Reading
+tagline: 啦啦啦，向太阳
 heroFullScreen: true
 projects:
   - icon: project
