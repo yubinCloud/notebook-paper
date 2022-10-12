@@ -28,31 +28,50 @@ function getBlogNamesFromDir(dirPath: string): string[] {
   return blogNames;
 }
 
-/**
- * 获取 KG 下面的所有文件的 navbar
- */
-const getKgNavBar = () => {
-  const kgBlogs: HopeThemeNavbarConfig = [];
-  const BASE_PATH = 'src/KG'
-  const files = fs.readdirSync(BASE_PATH);
+export function getSubDirNavBar(dirPath: string): HopeThemeNavbarConfig {
+  const blogNames = getBlogNamesFromDir(dirPath);
+  const nav: HopeThemeNavbarConfig = [];
+  for (let blogName of blogNames) {
+    nav.push({
+      'text': blogName,
+      'link': blogName,
+      'icon': 'note'
+    })
+  }
+  return nav;
+}
+
+export function getTopDirNavBar(dirPath: string, subDirIcon: string) {
+  const blogs: HopeThemeNavbarConfig = [];
+  const files = fs.readdirSync(dirPath);
   for (let fileName of files) {
-    if (isFile(BASE_PATH + '/' + fileName)) {
+    if (isFile(dirPath + '/' + fileName)) {
       const blogName = cutoffMdSuffix(fileName);
       if (blogName != null) {
-        kgBlogs.push(blogName);
+        blogs.push({
+          'text': blogName,
+          'link': blogName,
+          'icon': 'note'
+        });
       }
     }
     else {
-      kgBlogs.push({
+      blogs.push({
         text: fileName,
         prefix: fileName + '/',
-        icon: 'edit',
-        children: getBlogNamesFromDir(BASE_PATH + '/' + fileName)
+        icon: subDirIcon,
+        children: getSubDirNavBar(dirPath + '/' + fileName)
       })
     }
   }
-  console.log(kgBlogs);
-  return navbar(kgBlogs);
+  return navbar(blogs);
+}
+
+/**
+ * 获取 KG 下面的所有文件的 navbar
+ */
+export const getKgNavBar = () => {
+  return getTopDirNavBar('src/KG', 'creative');
 }
 
 export const my_navbar = navbar([
