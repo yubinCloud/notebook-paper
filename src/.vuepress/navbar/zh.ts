@@ -11,7 +11,7 @@ const krlNavBar = navbar([
 
 export const zhNavbar = navbar([
   {
-    text: "knowledge-graph",
+    text: "KG",
     prefix: "/kg/",
     icon: "discover",
     children: [

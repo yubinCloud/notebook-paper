@@ -9,7 +9,7 @@ import { navbar } from "vuepress-theme-hope";
 import * as fs from "fs";
 var getKgNavBar = () => {
   const kgNavBar = navbar([]);
-  fs.readdir(".../knowledge-graph", function(err, files) {
+  fs.readdir(".../KG", function(err, files) {
     if (err) {
       throw err;
     }
@@ -23,8 +23,8 @@ var krlNavBar = navbar([
 getKgNavBar();
 var my_navbar = navbar([
   {
-    text: "knowledge-graph",
-    prefix: "/knowledge-graph/",
+    text: "KG",
+    prefix: "/KG/",
     icon: "discover",
     children: krlNavBar
   }
